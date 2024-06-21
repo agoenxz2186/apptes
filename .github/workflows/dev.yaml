@@ -26,15 +26,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # - name: Hapus image
-      #   run: |
-      #     set +e
-      #     docker image rm projectsi/apptest:latest
-      #     set -e
+      - name: Hapus image
+        run: |
+          set +e
+          docker image rm projectsi/apptest:latest
+          set -e
 
-      # - name: Buat image api projectsi/apptest
-      #   run: |
-      #     docker build -t projectsi/apptest:latest .
+      - name: Buat image api projectsi/apptest
+        run: |
+          docker build -t projectsi/apptest:latest .
 
       - name: Jalankan service app
         run: |

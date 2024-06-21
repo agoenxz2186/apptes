@@ -10,7 +10,7 @@ services:
   apptest:
     container_name: apptest
     restart: always
-    image: agoenxz21/php81-nginx:latest
+    image: projectsi/apptest:latest
     entrypoint: ["sh", "/var/www/run.sh"]
     environment:
       TZ: Asia/Jakarta
@@ -20,7 +20,7 @@ services:
       DB_USERNAME: "postgresmhs851"
       DB_PASSWORD: "MhSBSIoke2024"
     volumes:
-      - ./:/var/www
+      # - ./:/var/www
       - /home/bsi/projectsi/apptest/storage:/var/www/storage/app
     ports:
       - "8080:80"
