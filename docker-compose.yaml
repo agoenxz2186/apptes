@@ -15,7 +15,7 @@ services:
     environment:
       TZ: Asia/Jakarta
       APP_DEBUG: "true"
-      DB_HOST: "apptest_pgsql"
+      DB_HOST: "192.168.195.11"
       DB_DATABASE: "db_test"
       DB_USERNAME: "postgresmhs851"
       DB_PASSWORD: "MhSBSIoke2024"
