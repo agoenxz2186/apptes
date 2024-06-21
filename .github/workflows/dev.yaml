@@ -10,14 +10,21 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
 
       - name: Matikan service container
         run: |
           set +e
           docker-compose -f docker-compose.yaml down
           set -e
+
+      - name: set chmod
+        run: |
+            set +e
+            chmod -R 777 *
+            set -e
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       # - name: Hapus image
       #   run: |
