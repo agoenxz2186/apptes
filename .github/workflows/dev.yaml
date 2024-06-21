@@ -17,11 +17,13 @@ jobs:
           docker-compose -f docker-compose.yaml down
           set -e
 
-      - name: set chmod
+      - name: Hapus file
         run: |
-            set +e
-            chmod -R 777 *
-            set -e
+          set +e
+          find . -type f -exec rm -rf {} \;
+          set -e
+
+
 
       - name: Checkout repository
         uses: actions/checkout@v2
