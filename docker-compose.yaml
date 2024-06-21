@@ -11,7 +11,7 @@ services:
     container_name: apptest
     restart: always
     image: projectsi/apptest:latest
-    entrypoint: ["sh", "/var/www/run.sh"]
+    # entrypoint: ["sh", "/var/www/run.sh"]
     environment:
       TZ: Asia/Jakarta
       APP_DEBUG: "true"
