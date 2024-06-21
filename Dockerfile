@@ -12,6 +12,6 @@ RUN chmod +x /run.sh
 RUN composer install
 # RUN npm install
 # RUN npm run build
-RUN php artisan cache:clear
+# RUN php artisan cache:clear
 EXPOSE 80
 ENTRYPOINT ["sh", "/var/www/run.sh"]
