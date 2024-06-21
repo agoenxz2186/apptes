@@ -2,7 +2,7 @@
 cd /var/www
 chmod -R 775 /var/www/storage
 chown -R www-data:www-data /var/www/storage
-
+composer install
 php artisan migrate
 php artisan cache:clear
 php artisan storage:link
