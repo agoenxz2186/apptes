@@ -5,14 +5,31 @@
   channel = "stable-23.11"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
   packages = [
+    pkgs.sudo
     pkgs.php82
     pkgs.php82Packages.composer
     pkgs.nodejs_20
-    pkgs.mariadb
+    pkgs.docker-compose
+    pkgs.docker
   ];
 
+  services.docker = {
+    enable = true;
+  };
+
+#   services.mysql = {
+#     enable = true;
+#     package = pkgs.mariadb;
+#   };
+
   # Sets environment variables in the workspace
-  env = {};
+  env = {
+    # MYSQL_HOST = "localhost";
+    # MYSQL_PORT = 3306;
+    # MYSQL_USER = "root";
+    # MYSQL_PASSWORD = "";
+    # MYSQL_DATABASE = "";
+  };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
@@ -26,6 +43,7 @@
           command = ["php" "artisan" "serve" "--port" "$PORT" "--host" "0.0.0.0"];
           manager = "web";
         };
+
       };
     };
   };

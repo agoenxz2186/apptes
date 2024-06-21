@@ -1,0 +1,46 @@
+version: '3.5'
+
+networks:
+  projectsinet:
+    name: projects1_projectsinet
+    external: true
+
+services:
+
+  apptest:
+    container_name: apptest
+    restart: always
+    image: agoenxz21/php81-nginx:latest
+    entrypoint: ["sh", "/var/www/run.sh"]
+    environment:
+      TZ: Asia/Jakarta
+      APP_DEBUG: "true"
+      DB_HOST: "apptest_pgsql"
+      DB_DATABASE: "db_test"
+      DB_USERNAME: "postgresmhs851"
+      DB_PASSWORD: "MhSBSIoke2024"
+    volumes:
+      - ./:/var/www
+      - /home/bsi/projectsi/apptest/storage:/var/www/storage/app
+    ports:
+      - "8080:80"
+    networks:
+      projectsinet:
+        ipv4_address: 192.168.195.10
+
+  apptest_pgsql:
+    container_name: apptest_pgsql
+    image: postgres:14.3-alpine3.16
+    restart: always
+    environment:
+      - TZ=Asia/Jakarta
+      - POSTGRES_PASSWORD=MhSBSIoke2024
+      - POSTGRES_USER=postgresmhs851
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_DB=db_test
+    volumes:
+      - /home/user/pgsql:/var/lib/postgresql/data/pgdata
+    networks:
+      projectsinet:
+        ipv4_address: 192.168.195.11
+
